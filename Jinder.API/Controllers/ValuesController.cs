@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Jinder.API.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,8 @@ namespace Jinder.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ValuesController : ControllerBase
     {
         private readonly DataDbContext _context;
@@ -19,6 +22,9 @@ namespace Jinder.API.Controllers
 
         }
         // GET api/values
+    
+        [Authorize]
+
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
