@@ -17,10 +17,13 @@ namespace Jinder.API.Data
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
             if (user == null)
             {
+                throw new Exception("User not found");
                 return null;
             }
             if (!VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
             {
+                throw new Exception("Password not correct");
+
                 return null;
             }
             return user;

@@ -26,6 +26,8 @@ namespace Jinder.API.Controllers
             _repo = repo;
             _config = config;
         }
+        [AllowAnonymous]
+
         [HttpPost ("register")]
         public async Task<IActionResult> Register (UserDto userdto)
         {
@@ -41,14 +43,16 @@ namespace Jinder.API.Controllers
             var createdUser  = _repo.Register(userToCreate,userdto.password);
             return StatusCode(201);
         }
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDTO userdto)
         {
+
             userdto.Username = userdto.Username.ToLower();
           var userr = await _repo.Login(userdto.Username,userdto.Password);
           if(userr == null)
           {
-             return Unauthorized();
+            return Unauthorized();
 
           }
           
@@ -69,6 +73,7 @@ namespace Jinder.API.Controllers
           var tokenHandler = new JwtSecurityTokenHandler();
           var token = tokenHandler.CreateToken(tokenDescriptor);
          // return Ok("here");
+
          return Ok(new { token = tokenHandler.WriteToken(token)});
 
         }

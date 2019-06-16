@@ -20,9 +20,11 @@ export class NavComponent implements OnInit, OnDestroy {
         console.log('Logged in succsesfully');
       },
       (error) => {
-        ('Failed');
+        (error);
+        console.log(error);
+        
       }
-    ))
+    ));
   }
  public loggedIn() {
    const token = localStorage.getItem('token');
