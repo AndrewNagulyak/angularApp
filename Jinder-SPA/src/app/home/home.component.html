@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5" *ngIf="!loggedIn">
   <div style="text-align: center" *ngIf="!registerMode">
   <h1>Find yourself</h1>
   <p clas="lead" >Come on Lets fucking started it up</p>
@@ -11,10 +11,10 @@
     <div class="row justify-content-center">
       <div class="col-4">
         <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register> 
+
       </div>
     </div>
     
   </div>
 
 </div>
-asf
