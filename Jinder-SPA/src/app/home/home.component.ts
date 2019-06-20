@@ -11,10 +11,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private http:HttpClient,private authService:AuthService) { }
   registerMode=false;
-  loggedIn;
+  loggedIn=false;
   ngOnInit() {
-    this.loggedIn = !!this.authService.loggedIn;
     this.authService.logged.subscribe((b:any)=>this.loggedIn=!!b);
+    this.loggedIn = !!this.authService.loggedIn;
+
   }
   registerToggle()
   {

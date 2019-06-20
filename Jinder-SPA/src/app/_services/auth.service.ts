@@ -2,11 +2,12 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt'
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-base = 'http://localhost:5000/api/auth/';
+base = environment.apiUrl+'auth/';
 jwtHelper = new JwtHelperService();
 jwtDecoded :any;
 logged = new EventEmitter<boolean>();
@@ -16,8 +17,8 @@ login(model: any) {
     const user = response;
     if (user) {
       localStorage.setItem('token', user.token);
-      this.jwtDecoded = this.jwtHelper.decodeToken(user.token);
-      console.log(this.jwtDecoded);
+      //this.jwtDecoded = this.jwtHelper.decodeToken(user.token);
+     // console.log(this.jwtDecoded);
     }
   }));
 }
