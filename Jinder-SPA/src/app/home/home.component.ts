@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   loggedIn=false;
   ngOnInit() {
     this.authService.logged.subscribe((b:any)=>this.loggedIn=!!b);
-    this.loggedIn = !!this.authService.loggedIn;
+    //this.loggedIn = !!this.authService.loggedIn;
 
   }
   registerToggle()

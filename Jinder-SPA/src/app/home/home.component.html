@@ -1,4 +1,4 @@
-<div class="container mt-5" *ngIf="!loggedIn">
+<div class="container mt-5" *ngIf="!loggedIn; else Node">
   <div style="text-align: center" *ngIf="!registerMode">
   <h1>Find yourself</h1>
   <p clas="lead" >Come on Lets fucking started it up</p>
@@ -17,4 +17,13 @@
     
   </div>
 
-</div>
+ </div>
+ <ng-template #Node>
+  {{loggedIn}}
+  <div class="container mt-5" >
+    <app-member-edit>
+  
+    </app-member-edit>
+  </div>
+</ng-template> -->
+

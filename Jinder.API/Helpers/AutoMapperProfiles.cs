@@ -23,7 +23,7 @@ namespace Jinder.API.Helpers
             {
                 opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());});
                 CreateMap<Photo, PhotosForDetailedDto>();
-            
+            CreateMap<userforupdatedto,User>();
          }
     }
 }
